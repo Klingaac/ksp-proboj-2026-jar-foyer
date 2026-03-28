@@ -1,5 +1,5 @@
 {
-  "server": "./server_linux",
+  "server": "./server_windows.exe",
   "game_root": ".",
   "players": {
     "py": {
@@ -7,7 +7,15 @@
       "language": "py"
     },
     "windows": {
-      "command": "C:/absolutna/cesta/ku/python.exe ../python/player.py",
+      "command": "C:/python39/python.exe ../players/python/player.py",
+      "language": "py"
+    },
+    "windows1": {
+      "command": "C:/python39/python.exe ../players/python/player.py",
+      "language": "py"
+    },
+    "windows2": {
+      "command": "C:/python39/python.exe ../players/python/player.py",
       "language": "py"
     },
     "cpp1": {

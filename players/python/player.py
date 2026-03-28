@@ -6,6 +6,7 @@ from game import Game, PlayerInterface
 from random import shuffle
 
 
+
 class Player(PlayerInterface):
     @staticmethod
     def log(*args):
