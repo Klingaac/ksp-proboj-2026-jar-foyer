@@ -7,15 +7,15 @@
       "language": "py"
     },
     "windows": {
-      "command": "C:/python39/python.exe ../players/python/player.py",
+      "command": "C:/Users/vikis/AppData/Local/Programs/Python/Python38/python.exe ../players/python/player.py",
       "language": "py"
     },
     "windows1": {
-      "command": "C:/python39/python.exe ../players/python/player.py",
+      "command": "C:/Users/vikis/AppData/Local/Programs/Python/Python38/python.exe ../players/python/player.py",
       "language": "py"
     },
     "windows2": {
-      "command": "C:/python39/python.exe ../players/python/player.py",
+      "command": "C:/Users/vikis/AppData/Local/Programs/Python/Python38/python.exe ../players/python/player.py",
       "language": "py"
     },
     "cpp1": {
