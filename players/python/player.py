@@ -16,7 +16,7 @@ def get_closest_human(player, p: Point, blocked: set, world: World):
     explored = {}
     current = [p]
     
-    explored[p] = -1
+    explored[p] = None
     
     while len(current) > 0:
         
@@ -31,7 +31,6 @@ def get_closest_human(player, p: Point, blocked: set, world: World):
                     continue
                 
                 if neighbour in blocked:
-                    player.log("blocked")
                     continue
                 
                 if world.map.can_move_to(neighbour):
@@ -44,9 +43,9 @@ def get_closest_human(player, p: Point, blocked: set, world: World):
                         
                         player.log("found guy :)") 
                         
-                        path = [neighbour]
+                        path = []
                         prev = neighbour
-                        while explored[prev] != -1:
+                        while explored[prev] != None:
                             prev = explored[prev]
                             path.append(prev)
                         
@@ -59,6 +58,7 @@ def get_closest_human(player, p: Point, blocked: set, world: World):
     
 
 class Player(PlayerInterface):
+    
     @staticmethod
     def log(*args):
         print(*args, file=sys.stderr)
@@ -73,11 +73,16 @@ class Player(PlayerInterface):
         blocked = set()
         
         for shade_id, shade in world.alive_shades.items():
+            if shade.owner != world.my_id:
+                continue
+                
             pathToHuman = get_closest_human(self, shade.position, blocked, world)
             if pathToHuman != None:
-                i = len(pathToHuman) - 2
-                moves.append(Move(shade_id, pathToHuman[i]))
-                blocked.add(pathToHuman[i])
+                nextStep = pathToHuman[len(pathToHuman) - 2]
+                moves.append(Move(shade_id, nextStep))
+                blocked.add(nextStep)
+                if nextStep == shade.position:
+                    self.log("problem")
             
         
         
