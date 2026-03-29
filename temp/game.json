@@ -1,0 +1,11 @@
+[
+  {
+    "gamefolder": "hra",
+    "players": [
+      "windows",
+      "windows1",
+      "windows2"
+    ],
+    "args": "../maps/maze.ppm"
+  }
+]

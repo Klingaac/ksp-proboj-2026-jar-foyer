@@ -1,0 +1,36 @@
+{
+  "server": "./server_windows.exe",
+  "game_root": ".",
+  "players": {
+    "py": {
+      "command": "./players/python/player.py",
+      "language": "py"
+    },
+    "windows": {
+      "command": "C:/python39/python.exe ../players/python/player.py",
+      "language": "py"
+    },
+    "windows1": {
+      "command": "C:/python39/python.exe ../players/python/player.py",
+      "language": "py"
+    },
+    "windows2": {
+      "command": "C:/python39/python.exe ../players/python/player.py",
+      "language": "py"
+    },
+    "cpp1": {
+      "command": "./players/cpp/player",
+      "language": "cpp"
+    },
+    "cpp2": {
+      "command": "./players/cpp/player",
+      "language": "cpp"
+    }
+  },
+  "timeout": {
+    "py": 10,
+    "cpp": 5
+  },
+  "disable_gzip": true
+}
+
