@@ -50,31 +50,25 @@ def scan_map(player, p: Point, blocked: set, world: World):
                         while explored[prev] != p:
                             prev = explored[prev]
                         
-                        closestHuman = path[-1]
+                        closestHuman = prev
                             
                     if neighbour in player.myTombstones:
                         player.log("found my tombstone")
                         
-                        path = []
                         prev = neighbour
-                        while explored[prev] != None:
+                        while explored[prev] != p:
                             prev = explored[prev]
-                            path.append(prev)
                         
-                        if len(path) >= 2:
-                            closestMyTombstone = path[len(path) - 2]
+                        closestHuman = prev
                             
                     if neighbour in player.enemyTombstones:
                         player.log("found enemy tombstone")
                         
-                        path = []
                         prev = neighbour
-                        while explored[prev] != None:
+                        while explored[prev] != p:
                             prev = explored[prev]
-                            path.append(prev)
                         
-                        if len(path) >= 2:
-                            closestEnemyTombstone = path[len(path) - 2]
+                        closestHuman = prev
                     
         current = new_current  
         
