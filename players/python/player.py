@@ -89,7 +89,7 @@ def scan_map(player, p: Point, blocked: set, world: World):
                     explored[neighbour] = cur
                     
                     # nasli sme cloveka
-                    if closestHuman != None and neighbour in player.peoplePositions:
+                    if closestHuman == None and neighbour in player.peoplePositions:
                         player.log("found person")
                         
                         prev = neighbour
@@ -98,7 +98,7 @@ def scan_map(player, p: Point, blocked: set, world: World):
                         
                         closestHuman = prev
                             
-                    if closestMyTombstone != None and neighbour in player.myTombstones:
+                    if closestMyTombstone == None and neighbour in player.myTombstones:
                         player.log("found my tombstone")
                         
                         prev = neighbour
@@ -107,7 +107,7 @@ def scan_map(player, p: Point, blocked: set, world: World):
                         
                         closestMyTombstone = prev
                             
-                    if closestEnemyTombstone != None and neighbour in player.enemyTombstones:
+                    if closestEnemyTombstone == None and neighbour in player.enemyTombstones:
                         player.log("found enemy tombstone")
                         
                         prev = neighbour
@@ -117,9 +117,6 @@ def scan_map(player, p: Point, blocked: set, world: World):
                         closestEnemyTombstone = prev
                     
         current = new_current  
-        
-        if closestEnemyTombstone and closestHuman and closestMyTombstone:
-            break
         
     return closestHuman, closestMyTombstone, closestEnemyTombstone
             
@@ -157,16 +154,11 @@ def move_to(player, start: Point, finish: Point, blocked: set):
                         
                         player.log("found guy :)") 
                         
-                        path = []
                         prev = neighbour
-                        while explored[prev] != None:
+                        while explored[prev] != start:
                             prev = explored[prev]
-                            path.append(prev)
                         
-                        if len(path) >= 2:
-                            return path[len(path) - 2]
-                        else:
-                            return
+                        return prev
                     
         current = new_current  
 
@@ -235,7 +227,7 @@ class Player(PlayerInterface):
                 
                     
                     
-        group_attack_threshold = 727
+        group_attack_threshold = 7
         
         for tombstone, shades in shadeToClosestEnemyTombstone.items():
             if len(shades) < group_attack_threshold:
