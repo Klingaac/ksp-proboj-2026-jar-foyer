@@ -149,8 +149,29 @@ def defense(player, p: Point, blocked: set, world: World):
     for base, shades in shadeToClosestMyTombstone.items():
         closest_shades = []
         for i in range(7):
-            closest_shades.append(shades[i])
-            if i 
+            closest_shades.append(shades[i][1])
+        i=0
+        position = []
+        for shade in closest_shades:
+            if i==0:
+                position = Point(base.x-1, base.y-1)
+            if i==1:
+                position = Point(base.x, base.y-1)
+            if i==2:
+                position = Point(base.x+1, base.y-1)
+            if i==3:
+                position = Point(base.x-1, base.y)
+            if i==4:
+                position = Point(base.x+1, base.y)
+            if i==5:
+                position = Point(base.x-1, base.y+1)
+            if i==6:
+                position = Point(base.x+1, base.y+1)
+            if shade.x != position[0] or shade.y != position[1]:
+                move_to(self, shade.position, position, blocked)    
+                
+            alreadymovedshapes.append(shade)  
+            i+=1
             
 class Player(PlayerInterface):
     
