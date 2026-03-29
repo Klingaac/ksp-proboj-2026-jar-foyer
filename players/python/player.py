@@ -7,6 +7,7 @@ from random import shuffle
 
 # // C:/Users/vikis/AppData/Local/Programs/Python/Python38/python.exe
 
+
 def scan_map(player, p: Point, blocked: set, world: World):   
     
     explored = {}
@@ -123,6 +124,8 @@ def scared(player, p: Point) -> bool:
             pos = Point(x + p.x, y + p.y)
             
             fear = 0
+            happiness = 0
+            
             for pos in pos.get_visible():
                 if pos in shade_positions:
                     if shade_positions[pos].owner != player.owner:
@@ -157,10 +160,7 @@ class Player(PlayerInterface):
         self.myTombstones: set[Tombstone] = set()
         self.enemyTombstones: set[Tombstone] = set()
         self.peoplePositions: set[Point] = set()
-        self.shadePosition: dict[Point, Shade] = {}
-        
-        for shade in world.alive_shades:
-            self.shadePosition[shade.position] = shade
+        self.shadePositions: dict[Point, Shade] = world.alive_shades
         
         for person in world.alive_people:
             self.peoplePositions.add(person.position)
