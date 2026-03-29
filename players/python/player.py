@@ -7,6 +7,8 @@ from random import shuffle
 
 # // C:/Users/vikis/AppData/Local/Programs/Python/Python38/python.exe
 
+
+
 def get_closest_human(player, p: Point, blocked: set, world: World):
     
     people_positions = set()
@@ -49,13 +51,57 @@ def get_closest_human(player, p: Point, blocked: set, world: World):
                             prev = explored[prev]
                             path.append(prev)
                         
-                        return path
-                    
-                    
+                        if len(path) >= 2:
+                            return path[len(path) - 2]
+                        else:
+                            return
                     
         current = new_current  
             
+def move_to(player, start: Point, finish: Point, blocked: set, world: World):
     
+    explored = {}
+    current = [start]
+    
+    explored[start] = None
+    
+    while len(current) > 0:
+        
+        new_current = []
+        for cur in current:
+            
+            neighbours = cur.get_neighbouring()
+        
+            for neighbour in neighbours:
+                
+                if neighbour in explored:
+                    continue
+                
+                if neighbour in blocked:
+                    continue
+                
+                if world.map.can_move_to(neighbour):
+                    
+                    new_current.append(neighbour)
+                    explored[neighbour] = cur
+                    
+                    # nasli sme cloveka
+                    if neighbour == finish:
+                        
+                        player.log("found guy :)") 
+                        
+                        path = []
+                        prev = neighbour
+                        while explored[prev] != None:
+                            prev = explored[prev]
+                            path.append(prev)
+                        
+                        if len(path) >= 2:
+                            return path[len(path) - 2]
+                        else:
+                            return
+                    
+        current = new_current  
 
 class Player(PlayerInterface):
     
@@ -72,17 +118,34 @@ class Player(PlayerInterface):
         moves = []
         blocked = set()
         
+        myShades: list[Shade] = []
+        myTombstones: list[Tombstone] = []
+        
         for shade_id, shade in world.alive_shades.items():
-            if shade.owner != world.my_id:
-                continue
+            if shade.owner == world.my_id:
+                myShades.append(shade)
                 
-            pathToHuman = get_closest_human(self, shade.position, blocked, world)
-            if pathToHuman != None:
-                nextStep = pathToHuman[len(pathToHuman) - 2]
-                moves.append(Move(shade_id, nextStep))
-                blocked.add(nextStep)
-                if nextStep == shade.position:
-                    self.log("problem")
+        attach_treshold = 10 * len(myTombstones) 
+        
+        # rozhodneme sa co ideme robit
+        if len(myShades) >= attach_treshold:
+            
+            averageDist = 0
+            for shade in myShades:
+                dist2 = shade.position.dist2()
+            # nech sa vsetci regroupnu na jedno miesto
+            
+        else:
+            # farmi viac ludi
+            # kazdy sa posunie alebo zje najblizsieho cloveka
+                
+            for shade in myShades:
+                step = get_closest_human(self, shade.position, blocked, world)
+                if step != None:
+                    moves.append(Move(shade_id, step))
+                    blocked.add(step)
+                    if step == shade.position:
+                        self.log("problem")
             
         
         
