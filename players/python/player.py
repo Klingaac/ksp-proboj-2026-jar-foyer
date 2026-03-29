@@ -173,8 +173,7 @@ def will_i_die(player, p: Point) -> bool:
     else:
         return True
         
-def defense(player, p: Point, blocked: set, world: World):  
-    current = [p]
+def defense(player, blocked: set, shadeToClosestMyTombstone: dict[Tombstone, tuple]): 
     
     for base, shades in shadeToClosestMyTombstone.items():
         closest_shades = []
@@ -198,9 +197,12 @@ def defense(player, p: Point, blocked: set, world: World):
             if i==6:
                 position = Point(base.x+1, base.y+1)
             if shade.x != position[0] or shade.y != position[1]:
-                move_to(self, shade.position, position, blocked)    
+                pos = move_to(player, shade.position, position, blocked)
+                if pos != None:
+                    player.moves.append(Move(shade.id, pos))
+                    blocked.add(pos)
                 
-            alreadymovedshapes.append(shade)  
+            player.alreadyMovedShades.append(shade)  
             i+=1
             
 class Player(PlayerInterface):
@@ -221,12 +223,13 @@ class Player(PlayerInterface):
         self.enemyTombstones: set[Point, Tombstone] = {}
         self.peoplePositions: set[Point] = set()
         self.shadePositions: dict[Point, Shade] = world.alive_shades
+        self.alreadyMovedShades = set()
         
         for person in world.alive_people:
             self.peoplePositions.add(person.position)
             
         
-        moves = []
+        self.moves = []
         blocked = set()
         
         # ziskam svoje shades
@@ -246,7 +249,6 @@ class Player(PlayerInterface):
         shadeToClosestEnemyTombstone = {}
         
         closestHumanToShade = {}
-        alreadyMovedShades = set()
         
         for shade in self.myShades:
             closestHuman, closestMyTombstone, closestMyTombstoneDist, closestEnemyTombstone, closestEnemyTombstoneDist = scan_map(self, shade.position, blocked, world)
@@ -268,45 +270,26 @@ class Player(PlayerInterface):
                     
                 shadeToClosestEnemyTombstone[closestEnemyTombstone].append((closestEnemyTombstoneDist, shade))
                 
-        
-                    
-        group_attack_threshold = 7
-        
-        for tombstone, shades in shadeToClosestEnemyTombstone.items():
-            
-            
-            
-            
-            if len(shades) < group_attack_threshold:
-                continue
-            
-            for t in shades:
-                dist = t[0]
-                shade = t[1]
-                
-                newPosition = move_to(self, shade.position, tombstone.position, blocked)
-                if newPosition != None and not will_i_die(self, newPosition):
-                    moves.append(Move(shade.id, newPosition))
-                    blocked.add(newPosition)
-                    alreadyMovedShades.add(shade)
                     
         for tombstone, shades in shadeToClosestMyTombstone.items():
             shadeToClosestMyTombstone[tombstone] = sorted(shades, key=lambda x: x[0])
             
+        # defense
+        if False:
+            defense(self, blocked, shadeToClosestMyTombstone)
                 
-            
         for shade in self.myShades:
-            if shade in alreadyMovedShades:
+            if shade in self.alreadyMovedShades:
                 continue
             
             if shade in closestHumanToShade:
                 closestHuman = closestHumanToShade[shade]
-                moves.append(Move(shade.id, closestHuman))
+                self.moves.append(Move(shade.id, closestHuman))
                 blocked.add(closestHuman)
-                alreadyMovedShades.add(shade)
+                self.alreadyMovedShades.add(shade)
              
     
-        return moves
+        return self.moves
 
 if __name__ == "__main__":
     game = Game(Player())
