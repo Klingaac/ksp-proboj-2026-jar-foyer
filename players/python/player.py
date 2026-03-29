@@ -53,20 +53,24 @@ def scan_map(player, p: Point, blocked: set, world: World):
                     if closestMyTombstone == None and neighbour in player.myTombstones:
                         player.log("found my tombstone")
                         
-                        prev = neighbour
-                        while explored[prev] != p:
-                            prev = explored[prev]
+                        closestMyTombstone = player.myTombstones[neighbour]
                         
-                        closestMyTombstone = prev
+                        # prev = neighbour
+                        # while explored[prev] != p:
+                        #     prev = explored[prev]
+                        
+                        # closestMyTombstone = prev
                             
                     if closestEnemyTombstone == None and neighbour in player.enemyTombstones:
                         player.log("found enemy tombstone")
                         
-                        prev = neighbour
-                        while explored[prev] != p:
-                            prev = explored[prev]
+                        closestEnemyTombstone = player.enemyTombstones[neighbour]
                         
-                        closestEnemyTombstone = prev
+                        # prev = neighbour
+                        # while explored[prev] != p:
+                        #     prev = explored[prev]
+                        
+                        # closestEnemyTombstone = prev
                     
         current = new_current  
         
@@ -185,13 +189,14 @@ class Player(PlayerInterface):
         
         self.world = world
         self.myShades: set[Shade] = set()
-        self.myTombstones: set[Tombstone] = set()
-        self.enemyTombstones: set[Tombstone] = set()
+        self.myTombstones: dict[Point, Tombstone] = {}
+        self.enemyTombstones: set[Point, Tombstone] = {}
         self.peoplePositions: set[Point] = set()
         self.shadePositions: dict[Point, Shade] = world.alive_shades
         
         for person in world.alive_people:
             self.peoplePositions.add(person.position)
+            
         
         moves = []
         blocked = set()
@@ -204,9 +209,9 @@ class Player(PlayerInterface):
         # ziskam moje tombstones
         for tombstone in world.alive_tombstones:
             if tombstone.owner == world.my_id:
-                self.myTombstones.add(tombstone)
+                self.myTombstones[tombstone.position] = tombstone
             else:
-                self.enemyTombstones.add(tombstone)
+                self.myTombstones[tombstone.position] = tombstone
                 
         
         shadeToClosestMyTombstone = {}
