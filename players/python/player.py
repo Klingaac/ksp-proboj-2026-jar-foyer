@@ -143,8 +143,15 @@ def scared(player, p: Point) -> bool:
     else:
         return True
         
+def defense(player, p: Point, blocked: set, world: World):  
+    current = [p]
     
-
+    for base, shades in shadeToClosestMyTombstone.items():
+        closest_shades = []
+        for i in range(7):
+            closest_shades.append(shades[i])
+            if i 
+            
 class Player(PlayerInterface):
     
     @staticmethod
