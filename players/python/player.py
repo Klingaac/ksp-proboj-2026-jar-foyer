@@ -246,7 +246,8 @@ class Player(PlayerInterface):
         
         for tombstone, shades in shadeToClosestEnemyTombstone.items():
             
-            shades.sort()
+            
+            
             
             if len(shades) < group_attack_threshold:
                 continue
@@ -262,8 +263,7 @@ class Player(PlayerInterface):
                     alreadyMovedShades.add(shade)
                     
         for tombstone, shades in shadeToClosestMyTombstone.items():
-            
-            shades.sort()
+            shadeToClosestMyTombstone[tombstone] = sorted(shades, key=lambda x: x[0])
             
                 
             
