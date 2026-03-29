@@ -4,6 +4,7 @@ from typing import List
 from data import World, Move, Person, World, Map, Shade, Tombstone, Point
 from game import Game, PlayerInterface
 from random import shuffle
+import math
 
 # // C:/Users/vikis/AppData/Local/Programs/Python/Python38/python.exe
 
@@ -113,9 +114,34 @@ def move_to(player, start: Point, finish: Point, blocked: set):
                     
         current = new_current  
 
-def scared(player, p: Point) -> bool:
+def get_fear(player, p: Point) -> int:
+    """
+    Vrati pocet dusi z nepriatelskych timov vo vyhlade tejto duse.
+    """
     
     shade_positions = player.shadePositions
+    
+    fear = 0
+    for pos in p.get_visible():
+        if pos in shade_positions and shade_positions[pos].owner != player.owner:
+            fear += 1
+    return fear
+
+def get_enemy_fears(player, p: Point):
+    shade_positions = player.shadePositions
+    fears = {}
+    for pos in p.get_visible():
+        if pos in shade_positions and shade_positions[pos].owner != player.owner:
+            fears[shade_positions[pos]] = shade_positions[pos].get_fear(shade_positions)
+    return fears
+
+def will_i_die(player, p: Point) -> bool:
+    
+    shade_positions = player.shadePositions
+    
+    enemy_fears = get_enemy_fears(player, p)
+    mn_enemy_fear = min(enemy_fears.values()) if enemy_fears else math.inf
+    return mn_enemy_fear <= get_fear(player, p)
     
     finalFear = 0
     finalHappiness = 999
@@ -219,7 +245,7 @@ class Player(PlayerInterface):
             
             for shade in shades:
                 newPosition = move_to(self, shade.position, tombstone.position, blocked)
-                if newPosition != None:
+                if newPosition != None and not will_i_die(self, newPosition):
                     moves.append(Move(shade.id, newPosition))
                     blocked.add(newPosition)
                     alreadyMovedShades.add(shade)
