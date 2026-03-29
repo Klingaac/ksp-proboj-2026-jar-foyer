@@ -19,6 +19,7 @@ def scan_map(player, p: Point, blocked: set, world: World):
     closestEnemyTombstone = None
     closestMyTombstoneDist = 0
     closestEnemyTombstoneDist = 0
+    closestHumanDist = 0
     
     explored[p] = None
     
@@ -48,6 +49,7 @@ def scan_map(player, p: Point, blocked: set, world: World):
                         
                         prev = neighbour
                         while explored[prev] != p:
+                            closestHumanDist += 1
                             prev = explored[prev]
                         
                         closestHuman = prev
@@ -74,7 +76,7 @@ def scan_map(player, p: Point, blocked: set, world: World):
                     
         current = new_current  
         
-    return closestHuman, closestMyTombstone, closestMyTombstoneDist, closestEnemyTombstone, closestEnemyTombstoneDist
+    return closestHuman, closestHumanDist, closestMyTombstone, closestMyTombstoneDist, closestEnemyTombstone, closestEnemyTombstoneDist
             
 def move_to(player, start: Point, finish: Point, blocked: set):
     
@@ -177,27 +179,29 @@ def defense(player, blocked: set, shadeToClosestMyTombstone: dict[Tombstone, tup
     
     for base, shades in shadeToClosestMyTombstone.items():
         closest_shades = []
-        for i in range(7):
+        for i in range(4):
             closest_shades.append(shades[i][1])
         i=0
         position = []
+        # for shade in closest_shades:
+        #     if i==0:
+        #         position = Point(base.x-1, base.y-1)
+        #     if i==1:
+        #         position = Point(base.x, base.y-1)
+        #     if i==2:
+        #         position = Point(base.x+1, base.y-1)
+        #     if i==3:
+        #         position = Point(base.x-1, base.y)
+        #     if i==4:
+        #         position = Point(base.x+1, base.y)
+        #     if i==5:
+        #         position = Point(base.x-1, base.y+1)
+        #     if i==6:
+        #         position = Point(base.x+1, base.y+1)
         for shade in closest_shades:
-            if i==0:
-                position = Point(base.x-1, base.y-1)
-            if i==1:
-                position = Point(base.x, base.y-1)
-            if i==2:
-                position = Point(base.x+1, base.y-1)
-            if i==3:
-                position = Point(base.x-1, base.y)
-            if i==4:
-                position = Point(base.x+1, base.y)
-            if i==5:
-                position = Point(base.x-1, base.y+1)
-            if i==6:
-                position = Point(base.x+1, base.y+1)
+            
             if shade.x != position[0] or shade.y != position[1]:
-                pos = move_to(player, shade.position, position, blocked)
+                pos = move_to(player, shade.position, base.position, blocked)
                 if pos != None:
                     player.moves.append(Move(shade.id, pos))
                     blocked.add(pos)
@@ -248,13 +252,33 @@ class Player(PlayerInterface):
         shadeToClosestMyTombstone = {}
         shadeToClosestEnemyTombstone = {}
         
-        closestHumanToShade = {}
+        targets = {}
         
         for shade in self.myShades:
-            closestHuman, closestMyTombstone, closestMyTombstoneDist, closestEnemyTombstone, closestEnemyTombstoneDist = scan_map(self, shade.position, blocked, world)
+            closestHuman, closestHumanDist, closestMyTombstone, closestMyTombstoneDist, closestEnemyTombstone, closestEnemyTombstoneDist = scan_map(self, shade.position, blocked, world)
             
-            if closestHuman != None:
-                closestHumanToShade[shade] = closestHuman
+            if closestEnemyTombstone != None:
+                if closestHuman != None and closestHumanDist < closestEnemyTombstoneDist:
+                
+                    targets[shade] = closestHuman
+                    blocked.add(closestHuman)
+                    
+                else:
+                
+                    targets[shade] = closestEnemyTombstone
+                    blocked.add(closestEnemyTombstone)
+                
+            elif closestHuman != None:
+                if closestEnemyTombstone != None and closestEnemyTombstoneDist < closestHumanDist:
+                    
+                    targets[shade] = closestEnemyTombstone
+                    blocked.add(closestEnemyTombstone)
+                    
+                else:
+                    
+                    targets[shade] = closestHuman
+                    blocked.add(closestHuman)
+            
             
             # priradim shade k ich najblizsim myTombstone
             if closestMyTombstone != None:
@@ -282,12 +306,47 @@ class Player(PlayerInterface):
             if shade in self.alreadyMovedShades:
                 continue
             
-            if shade in closestHumanToShade:
-                closestHuman = closestHumanToShade[shade]
+            if shade in targets:
+                closestHuman = targets[shade]
                 self.moves.append(Move(shade.id, closestHuman))
                 blocked.add(closestHuman)
                 self.alreadyMovedShades.add(shade)
              
+        for shade in self.myShades:
+            
+            if shade not in self.alreadyMovedShades:
+                continue
+            
+            if shade.position in blocked:
+                
+                self.log("is in blocked")
+                
+                skip = False
+                
+                for i in (-1, 1):
+                    
+                    if skip:
+                        break
+                    
+                    for j in (-1, 1):
+                        
+                        p = Point(i + shade.position.x, j + shade.position.y)
+                        
+                        if p not in blocked:
+                            
+                            self.log("unblocked")
+                            
+                            self.moves.append(Move(shade.id, p))
+                            blocked.add(p)
+                            skip = True
+                            break
+                        
+        for i, move1 in enumerate(self.moves):
+            for j, move2 in enumerate(self.moves):
+                if i == j:
+                    continue
+                if move1.target == move2.target:
+                    self.log("duplicate")
     
         return self.moves
 
