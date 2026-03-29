@@ -299,7 +299,7 @@ class Player(PlayerInterface):
             shadeToClosestMyTombstone[tombstone] = sorted(shades, key=lambda x: x[0])
             
         # defense
-        if False:
+        if len(shadeToClosestMyTombstone.keys())*7+5<len(current):
             defense(self, blocked, shadeToClosestMyTombstone)
                 
         for shade in self.myShades:
