@@ -170,19 +170,19 @@ class Player(PlayerInterface):
             if closestHuman != None:
                 closestHumanToShade[shade] = closestHuman
             
-            # priradim shade k ich najblizsim myTombstone
-            if closestMyTombstone != None:
-                if closestMyTombstone not in shadeToClosestMyTombstone:
-                    shadeToClosestMyTombstone[closestMyTombstone] = set()
+            # # priradim shade k ich najblizsim myTombstone
+            # if closestMyTombstone != None:
+            #     if closestMyTombstone not in shadeToClosestMyTombstone:
+            #         shadeToClosestMyTombstone[closestMyTombstone] = set()
                 
-                shadeToClosestMyTombstone[closestMyTombstone].add(shade)
+            #     shadeToClosestMyTombstone[closestMyTombstone].add(shade)
                 
-            # priradim shade k ich najblizsim enemyTombstone
-            if closestEnemyTombstone != None:
-                if closestEnemyTombstone not in shadeToClosestEnemyTombstone:
-                    shadeToClosestEnemyTombstone[closestEnemyTombstone] = set()
+            # # priradim shade k ich najblizsim enemyTombstone
+            # if closestEnemyTombstone != None:
+            #     if closestEnemyTombstone not in shadeToClosestEnemyTombstone:
+            #         shadeToClosestEnemyTombstone[closestEnemyTombstone] = set()
                     
-                shadeToClosestEnemyTombstone[closestEnemyTombstone].add(shade)
+            #     shadeToClosestEnemyTombstone[closestEnemyTombstone].add(shade)
                 
                     
                     
