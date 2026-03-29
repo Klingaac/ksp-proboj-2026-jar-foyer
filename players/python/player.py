@@ -11,9 +11,7 @@ from random import shuffle
 
 def scan_map(player, p: Point, blocked: set, world: World):
     
-    people_positions = set()
-    for person in world.alive_people:
-        people_positions.add(person.position)
+    
     
     explored = {}
     current = [p]
@@ -45,17 +43,14 @@ def scan_map(player, p: Point, blocked: set, world: World):
                     explored[neighbour] = cur
                     
                     # nasli sme cloveka
-                    if neighbour in people_positions:
+                    if neighbour in player.peoplePositions:
                         player.log("found person")
                         
-                        path = []
                         prev = neighbour
-                        while explored[prev] != None:
+                        while explored[prev] != p:
                             prev = explored[prev]
-                            path.append(prev)
                         
-                        if len(path) >= 2:
-                            closestHuman = path[len(path) - 2]
+                        closestHuman = path[-1]
                             
                     if neighbour in player.myTombstones:
                         player.log("found my tombstone")
@@ -68,6 +63,18 @@ def scan_map(player, p: Point, blocked: set, world: World):
                         
                         if len(path) >= 2:
                             closestMyTombstone = path[len(path) - 2]
+                            
+                    if neighbour in player.enemyTombstones:
+                        player.log("found enemy tombstone")
+                        
+                        path = []
+                        prev = neighbour
+                        while explored[prev] != None:
+                            prev = explored[prev]
+                            path.append(prev)
+                        
+                        if len(path) >= 2:
+                            closestEnemyTombstone = path[len(path) - 2]
                     
         current = new_current  
         
@@ -136,6 +143,10 @@ class Player(PlayerInterface):
         self.myShades: set[Shade] = set()
         self.myTombstones: set[Tombstone] = set()
         self.enemyTombstones: set[Tombstone] = set()
+        self.peoplePositions: set[Point] = set()
+        
+        for person in world.alive_people:
+            self.peoplePositions.add(person.position)
         
         moves = []
         blocked = set()
@@ -152,13 +163,12 @@ class Player(PlayerInterface):
             else:
                 self.enemyTombstones.add(tombstone)
                 
-        attach_treshold = 9 * len(self.myTombstones) 
         
         shadeToClosestMyTombstone = {}
         shadeToClosestEnemyTombstone = {}
         
         closestHumanToShade = {}
-        alreadyMovesShades = set()
+        alreadyMovedShades = set()
         
         for shade in self.myShades:
             closestHuman, closestMyTombstone, closestEnemyTombstone = scan_map(self, shade.position, blocked, world)
@@ -184,7 +194,7 @@ class Player(PlayerInterface):
                     
         group_attack_threshold = 7
         
-        for tombstone, shades in enumerate(shadeToClosestEnemyTombstone):
+        for tombstone, shades in shadeToClosestEnemyTombstone.items():
             if len(shades) < group_attack_threshold:
                 continue
             
@@ -193,59 +203,21 @@ class Player(PlayerInterface):
                 if newPosition != None:
                     moves.append(Move(shade.id, newPosition))
                     blocked.add(newPosition)
-                    alreadyMovesShades.add(shade)
+                    alreadyMovedShades.add(shade)
             
                 
             
         for shade in self.myShades:
-            if shade in alreadyMovesShades:
+            if shade in alreadyMovedShades:
                 continue
             
             if shade in closestHumanToShade:
                 closestHuman = closestHumanToShade[shade]
                 moves.append(Move(shade.id, closestHuman))
                 blocked.add(closestHuman)
-                if closestHuman == shade.position:
-                    self.log("problem")
             else:
                 blocked.add(shade.position)    
-                
-                
-        
-        # rozhodneme sa co ideme robit
-        if len(self.myShades) >= attach_treshold:
-            
-            averageDist = 0
-            for shade in self.myShades:
-                dist2 = shade.position.dist2()
-                
-            
-                
-            # nech sa vsetci regroupnu na jedno miesto
-            
-        else:
-            # farmi viac ludi
-            # kazdy sa posunie alebo zje najblizsieho cloveka
-                
-            for shade in self.myShades:
-                closestHuman, closestMyTombstone, closestEnemyTombstone = scan_map(self, shade.position, blocked, world)
-                if closestHuman != None:
-                    moves.append(Move(shade.id, closestHuman))
-                    blocked.add(closestHuman)
-                    if closestHuman == shade.position:
-                        self.log("problem")
-                else:
-                    blocked.add(shade.position)
-            
-        
-        
-        # for shade_id, shade in world.alive_shades.items():
-        #     neighbours = shade.position.get_neighbouring()
-        #     shuffle(neighbours)
-        #     for ngb in neighbours:
-        #         if world.map.can_move_to(ngb):
-        #             moves.append(Move(shade_id, ngb))
-        #             break
+    
         return moves
 
 if __name__ == "__main__":
