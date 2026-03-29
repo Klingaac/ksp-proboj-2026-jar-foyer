@@ -274,7 +274,9 @@ class Player(PlayerInterface):
             if shade in closestHumanToShade:
                 closestHuman = closestHumanToShade[shade]
                 moves.append(Move(shade.id, closestHuman))
-                blocked.add(closestHuman)  
+                blocked.add(closestHuman)
+                alreadyMovedShades.add(shade)
+             
     
         return moves
 
