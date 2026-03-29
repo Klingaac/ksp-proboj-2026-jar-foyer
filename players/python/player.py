@@ -59,7 +59,7 @@ def scan_map(player, p: Point, blocked: set, world: World):
                         while explored[prev] != p:
                             prev = explored[prev]
                         
-                        closestHuman = prev
+                        closestMyTombstone = prev
                             
                     if neighbour in player.enemyTombstones:
                         player.log("found enemy tombstone")
@@ -68,7 +68,7 @@ def scan_map(player, p: Point, blocked: set, world: World):
                         while explored[prev] != p:
                             prev = explored[prev]
                         
-                        closestHuman = prev
+                        closestEnemyTombstone = prev
                     
         current = new_current  
         
