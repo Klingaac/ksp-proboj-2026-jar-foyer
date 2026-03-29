@@ -1,306 +1,331 @@
 STARTING TURN: 0
 STARTING TURN: 1
+Ant 1 has already moved
+Ant 2 has already moved
+Ant 3 has already moved
 STARTING TURN: 2
+Ant 1 has already moved
+Ant 2 has already moved
+Ant 3 has already moved
 STARTING TURN: 3
+Ant 1 has already moved
+Ant 2 has already moved
+Ant 3 has already moved
 STARTING TURN: 4
+Ant 1 has already moved
+Ant 2 has already moved
+Ant 3 has already moved
 STARTING TURN: 5
+Ant 1 has already moved
+Ant 2 has already moved
+Ant 3 has already moved
 STARTING TURN: 6
+Ant 1 has already moved
+Ant 2 has already moved
+Ant 3 has already moved
 STARTING TURN: 7
+Ant 1 has already moved
+Ant 2 has already moved
+Ant 5 has already moved
+Ant 3 has already moved
 STARTING TURN: 8
+Ant 1 has already moved
+Ant 2 has already moved
+Ant 4 has already moved
+Ant 3 has already moved
+Ant 5 has already moved
 STARTING TURN: 9
+Ant 6 has already moved
+Ant 1 has already moved
+Ant 2 has already moved
+Ant 4 has already moved
+Ant 5 has already moved
+Ant 3 has already moved
 STARTING TURN: 10
+Ant 7 has already moved
+Ant 6 has already moved
+Ant 1 has already moved
+Ant 2 has already moved
+Ant 4 has already moved
+Ant 3 has already moved
+Ant 5 has already moved
 STARTING TURN: 11
+Ant 6 has already moved
+Ant 1 has already moved
+Ant 2 has already moved
+Ant 4 has already moved
+Ant 3 has already moved
+Ant 5 has already moved
+Ant 8 has already moved
 STARTING TURN: 12
+Ant 6 has already moved
+Ant 1 has already moved
+Ant 4 has already moved
+Ant 2 has already moved
+Ant 3 has already moved
+Ant 5 has already moved
+Ant 8 has already moved
 STARTING TURN: 13
+Ant 7 has already moved
+Ant 6 has already moved
+Ant 1 has already moved
+Ant 2 has already moved
+Ant 4 has already moved
+Ant 5 has already moved
+Ant 3 has already moved
+Ant 8 has already moved
+Ant 10 has already moved
 STARTING TURN: 14
+Ant 1 has already moved
+Ant 2 has already moved
+Ant 4 has already moved
+Ant 3 has already moved
+Ant 10 has already moved
+Ant 8 has already moved
 STARTING TURN: 15
+Ant 1 has already moved
+Ant 2 has already moved
+Ant 4 has already moved
+Ant 10 has already moved
+Ant 5 has already moved
+Ant 11 has already moved
+Ant 3 has already moved
 STARTING TURN: 16
+Ant 1 has already moved
+Ant 4 has already moved
+Ant 2 has already moved
+Ant 10 has already moved
+Ant 3 has already moved
+Ant 5 has already moved
+Ant 11 has already moved
 STARTING TURN: 17
+Ant 9 has already moved
+Ant 6 has already moved
+Ant 2 has already moved
+Ant 4 has already moved
+Ant 8 has already moved
+Ant 11 has already moved
+Ant 10 has already moved
+Ant 5 has already moved
 STARTING TURN: 18
+Ant 6 has already moved
+Ant 2 has already moved
+Ant 4 has already moved
+Ant 8 has already moved
+Ant 10 has already moved
+Ant 5 has already moved
+Ant 11 has already moved
 STARTING TURN: 19
+Ant 13 has already moved
+Ant 7 has already moved
+Ant 4 has already moved
+Ant 14 has already moved
+Ant 2 has already moved
+Ant 10 has already moved
+Ant 11 has already moved
+Ant 8 has already moved
+Ant 5 has already moved
 STARTING TURN: 20
+Ant 9 has already moved
+Ant 6 has already moved
+Ant 2 has already moved
+Ant 14 has already moved
+Ant 4 has already moved
+Ant 8 has already moved
+Ant 10 has already moved
+Ant 11 has already moved
+Ant 5 has already moved
 STARTING TURN: 21
+Ant 6 has already moved
+Ant 14 has already moved
+Ant 4 has already moved
+Ant 2 has already moved
+Ant 5 has already moved
+Ant 8 has already moved
+Ant 11 has already moved
+Ant 15 has already moved
+Ant 10 has already moved
 STARTING TURN: 22
+Ant 12 has already moved
+Ant 6 has already moved
+Ant 4 has already moved
+Ant 14 has already moved
+Ant 2 has already moved
+Ant 8 has already moved
+Ant 11 has already moved
+Ant 5 has already moved
+Ant 15 has already moved
+Ant 10 has already moved
 STARTING TURN: 23
+Ant 7 has already moved
+Ant 6 has already moved
+Ant 14 has already moved
+Ant 4 has already moved
+Ant 2 has already moved
+Ant 11 has already moved
+Ant 8 has already moved
+Ant 15 has already moved
+Ant 5 has already moved
+Ant 10 has already moved
 STARTING TURN: 24
-Player windows has not enough resources to continue playing
-Player windows has been killed
+Ant 9 has already moved
+Ant 7 has already moved
+Ant 4 has already moved
+Ant 14 has already moved
+Ant 2 has already moved
+Ant 11 has already moved
+Ant 8 has already moved
+Ant 15 has already moved
 STARTING TURN: 25
+Ant 9 has already moved
+Ant 7 has already moved
+Ant 4 has already moved
+Ant 14 has already moved
+Ant 15 has already moved
+Ant 8 has already moved
 STARTING TURN: 26
+Ant 13 has already moved
+Ant 9 has already moved
+Ant 14 has already moved
+Ant 4 has already moved
+Ant 15 has already moved
+Ant 10 has already moved
 STARTING TURN: 27
+Ant 13 has already moved
+Ant 12 has already moved
+Ant 9 has already moved
+Ant 4 has already moved
+Ant 14 has already moved
+Ant 16 has already moved
+Ant 10 has already moved
+Ant 15 has already moved
 STARTING TURN: 28
+Ant 9 has already moved
+Ant 14 has already moved
+Ant 4 has already moved
+Ant 16 has already moved
+Ant 15 has already moved
+Ant 10 has already moved
 STARTING TURN: 29
+Ant 13 has already moved
+Ant 12 has already moved
+Ant 4 has already moved
+Ant 14 has already moved
+Ant 16 has already moved
+Ant 15 has already moved
 STARTING TURN: 30
+Ant 13 has already moved
+Ant 12 has already moved
+Ant 4 has already moved
+Ant 16 has already moved
+Ant 14 has already moved
+Ant 15 has already moved
+Player windows2 has not enough resources to continue playing
+Player windows2 has been killed
 STARTING TURN: 31
+Ant 12 has already moved
+Ant 16 has already moved
+Ant 14 has already moved
 STARTING TURN: 32
+Ant 13 has already moved
+Ant 12 has already moved
+Ant 14 has already moved
+Ant 16 has already moved
 STARTING TURN: 33
+Ant 13 has already moved
+Ant 12 has already moved
+Ant 14 has already moved
+Ant 16 has already moved
 STARTING TURN: 34
+Ant 13 has already moved
+Ant 12 has already moved
+Ant 16 has already moved
+Ant 14 has already moved
 STARTING TURN: 35
+Ant 13 has already moved
+Ant 12 has already moved
+Ant 16 has already moved
+Ant 14 has already moved
 STARTING TURN: 36
+Ant 13 has already moved
+Ant 17 has already moved
+Ant 12 has already moved
+Ant 14 has already moved
+Ant 16 has already moved
 STARTING TURN: 37
+Ant 13 has already moved
+Ant 18 has already moved
+Ant 12 has already moved
+Ant 17 has already moved
+Ant 16 has already moved
+Ant 14 has already moved
 STARTING TURN: 38
+Ant 13 has already moved
+Ant 19 has already moved
+Ant 18 has already moved
+Ant 17 has already moved
+Ant 12 has already moved
+Ant 16 has already moved
+Ant 14 has already moved
 STARTING TURN: 39
+Ant 17 has already moved
+Ant 12 has already moved
+Ant 13 has already moved
+Ant 16 has already moved
+Ant 14 has already moved
 STARTING TURN: 40
+Ant 13 has already moved
+Ant 19 has already moved
+Ant 17 has already moved
+Ant 12 has already moved
+Ant 14 has already moved
+Ant 16 has already moved
 STARTING TURN: 41
+Ant 19 has already moved
+Ant 13 has already moved
+Ant 17 has already moved
+Ant 16 has already moved
 STARTING TURN: 42
+Ant 18 has already moved
+Ant 13 has already moved
+Ant 17 has already moved
+Ant 16 has already moved
 STARTING TURN: 43
+Ant 18 has already moved
+Ant 13 has already moved
+Ant 17 has already moved
+Ant 16 has already moved
 STARTING TURN: 44
+Ant 18 has already moved
+Ant 13 has already moved
+Ant 17 has already moved
+Ant 16 has already moved
 STARTING TURN: 45
+Ant 13 has already moved
+Ant 17 has already moved
+Ant 16 has already moved
 STARTING TURN: 46
+Ant 18 has already moved
+Ant 13 has already moved
+Ant 16 has already moved
 STARTING TURN: 47
+Ant 13 has already moved
+Ant 17 has already moved
+Ant 16 has already moved
 STARTING TURN: 48
+Ant 19 has already moved
+Ant 18 has already moved
+Ant 17 has already moved
+Ant 13 has already moved
+Ant 16 has already moved
 STARTING TURN: 49
-STARTING TURN: 50
-STARTING TURN: 51
-STARTING TURN: 52
-STARTING TURN: 53
-STARTING TURN: 54
-STARTING TURN: 55
-STARTING TURN: 56
-STARTING TURN: 57
-STARTING TURN: 58
-STARTING TURN: 59
-STARTING TURN: 60
-STARTING TURN: 61
-STARTING TURN: 62
-STARTING TURN: 63
-STARTING TURN: 64
-STARTING TURN: 65
-STARTING TURN: 66
-STARTING TURN: 67
-STARTING TURN: 68
-STARTING TURN: 69
-STARTING TURN: 70
-STARTING TURN: 71
-STARTING TURN: 72
-STARTING TURN: 73
-STARTING TURN: 74
-STARTING TURN: 75
-STARTING TURN: 76
-STARTING TURN: 77
-STARTING TURN: 78
-STARTING TURN: 79
-STARTING TURN: 80
-STARTING TURN: 81
-STARTING TURN: 82
-STARTING TURN: 83
-STARTING TURN: 84
-STARTING TURN: 85
-STARTING TURN: 86
-STARTING TURN: 87
-STARTING TURN: 88
-STARTING TURN: 89
-STARTING TURN: 90
-STARTING TURN: 91
-STARTING TURN: 92
-STARTING TURN: 93
-STARTING TURN: 94
-STARTING TURN: 95
-STARTING TURN: 96
-STARTING TURN: 97
-STARTING TURN: 98
-STARTING TURN: 99
-STARTING TURN: 100
-STARTING TURN: 101
-STARTING TURN: 102
-STARTING TURN: 103
-STARTING TURN: 104
-STARTING TURN: 105
-STARTING TURN: 106
-STARTING TURN: 107
-STARTING TURN: 108
-STARTING TURN: 109
-STARTING TURN: 110
-STARTING TURN: 111
-STARTING TURN: 112
-STARTING TURN: 113
-STARTING TURN: 114
-STARTING TURN: 115
-STARTING TURN: 116
-STARTING TURN: 117
-STARTING TURN: 118
-STARTING TURN: 119
-STARTING TURN: 120
-STARTING TURN: 121
-STARTING TURN: 122
-STARTING TURN: 123
-STARTING TURN: 124
-STARTING TURN: 125
-STARTING TURN: 126
-STARTING TURN: 127
-STARTING TURN: 128
-STARTING TURN: 129
-STARTING TURN: 130
-STARTING TURN: 131
-STARTING TURN: 132
-STARTING TURN: 133
-STARTING TURN: 134
-STARTING TURN: 135
-STARTING TURN: 136
-STARTING TURN: 137
-STARTING TURN: 138
-STARTING TURN: 139
-STARTING TURN: 140
-STARTING TURN: 141
-STARTING TURN: 142
-STARTING TURN: 143
-STARTING TURN: 144
-STARTING TURN: 145
-STARTING TURN: 146
-STARTING TURN: 147
-STARTING TURN: 148
-STARTING TURN: 149
-STARTING TURN: 150
-STARTING TURN: 151
-STARTING TURN: 152
-STARTING TURN: 153
-STARTING TURN: 154
-STARTING TURN: 155
-STARTING TURN: 156
-STARTING TURN: 157
-STARTING TURN: 158
-STARTING TURN: 159
-STARTING TURN: 160
-STARTING TURN: 161
-STARTING TURN: 162
-STARTING TURN: 163
-STARTING TURN: 164
-STARTING TURN: 165
-STARTING TURN: 166
-STARTING TURN: 167
-STARTING TURN: 168
-STARTING TURN: 169
-STARTING TURN: 170
-STARTING TURN: 171
-STARTING TURN: 172
-STARTING TURN: 173
-STARTING TURN: 174
-STARTING TURN: 175
-STARTING TURN: 176
-STARTING TURN: 177
-STARTING TURN: 178
-STARTING TURN: 179
-STARTING TURN: 180
-STARTING TURN: 181
-STARTING TURN: 182
-STARTING TURN: 183
-STARTING TURN: 184
-STARTING TURN: 185
-STARTING TURN: 186
-STARTING TURN: 187
-STARTING TURN: 188
-STARTING TURN: 189
-STARTING TURN: 190
-STARTING TURN: 191
-STARTING TURN: 192
-STARTING TURN: 193
-STARTING TURN: 194
-STARTING TURN: 195
-STARTING TURN: 196
-STARTING TURN: 197
-STARTING TURN: 198
-STARTING TURN: 199
-STARTING TURN: 200
-STARTING TURN: 201
-STARTING TURN: 202
-STARTING TURN: 203
-STARTING TURN: 204
-STARTING TURN: 205
-STARTING TURN: 206
-STARTING TURN: 207
-STARTING TURN: 208
-STARTING TURN: 209
-STARTING TURN: 210
-STARTING TURN: 211
-STARTING TURN: 212
-STARTING TURN: 213
-STARTING TURN: 214
-STARTING TURN: 215
-STARTING TURN: 216
-STARTING TURN: 217
-STARTING TURN: 218
-STARTING TURN: 219
-STARTING TURN: 220
-STARTING TURN: 221
-STARTING TURN: 222
-STARTING TURN: 223
-STARTING TURN: 224
-STARTING TURN: 225
-STARTING TURN: 226
-STARTING TURN: 227
-STARTING TURN: 228
-STARTING TURN: 229
-STARTING TURN: 230
-STARTING TURN: 231
-STARTING TURN: 232
-STARTING TURN: 233
-STARTING TURN: 234
-STARTING TURN: 235
-STARTING TURN: 236
-STARTING TURN: 237
-STARTING TURN: 238
-STARTING TURN: 239
-STARTING TURN: 240
-STARTING TURN: 241
-STARTING TURN: 242
-STARTING TURN: 243
-STARTING TURN: 244
-STARTING TURN: 245
-STARTING TURN: 246
-STARTING TURN: 247
-STARTING TURN: 248
-STARTING TURN: 249
-STARTING TURN: 250
-STARTING TURN: 251
-STARTING TURN: 252
-STARTING TURN: 253
-STARTING TURN: 254
-STARTING TURN: 255
-STARTING TURN: 256
-STARTING TURN: 257
-STARTING TURN: 258
-STARTING TURN: 259
-STARTING TURN: 260
-STARTING TURN: 261
-STARTING TURN: 262
-STARTING TURN: 263
-STARTING TURN: 264
-STARTING TURN: 265
-STARTING TURN: 266
-STARTING TURN: 267
-STARTING TURN: 268
-STARTING TURN: 269
-STARTING TURN: 270
-STARTING TURN: 271
-STARTING TURN: 272
-STARTING TURN: 273
-STARTING TURN: 274
-STARTING TURN: 275
-STARTING TURN: 276
-STARTING TURN: 277
-STARTING TURN: 278
-STARTING TURN: 279
-STARTING TURN: 280
-STARTING TURN: 281
-STARTING TURN: 282
-STARTING TURN: 283
-STARTING TURN: 284
-STARTING TURN: 285
-STARTING TURN: 286
-STARTING TURN: 287
-STARTING TURN: 288
-STARTING TURN: 289
-STARTING TURN: 290
-STARTING TURN: 291
-STARTING TURN: 292
-STARTING TURN: 293
-STARTING TURN: 294
-STARTING TURN: 295
-STARTING TURN: 296
-STARTING TURN: 297
-STARTING TURN: 298
-STARTING TURN: 299
-Game end: Max turn count reached
+Ant 13 has already moved
+Ant 18 has already moved
+Ant 17 has already moved
+Ant 16 has already moved
+Player windows1 has not enough resources to continue playing
+Player windows1 has been killed
+Game end: Last player alive
 Sending scores
 [proboj] process terminated
  exit: 1
