@@ -7,57 +7,7 @@ from random import shuffle
 
 # // C:/Users/vikis/AppData/Local/Programs/Python/Python38/python.exe
 
-def get_closest_human(player, p: Point, blocked: set, world: World):
-    
-    people_positions = set()
-    for person in world.alive_people:
-        people_positions.add(person.position)
-    
-    explored = {}
-    current = [p]
-    
-    explored[p] = None
-    
-    while len(current) > 0:
-        
-        new_current = []
-        for cur in current:
-            
-            neighbours = cur.get_neighbouring()
-        
-            for neighbour in neighbours:
-                
-                if neighbour in explored:
-                    continue
-                
-                if neighbour in blocked:
-                    continue
-                
-                if world.map.can_move_to(neighbour):
-                    
-                    new_current.append(neighbour)
-                    explored[neighbour] = cur
-                    
-                    # nasli sme cloveka
-                    if neighbour in people_positions:
-                        
-                        player.log("found guy :)") 
-                        
-                        path = []
-                        prev = neighbour
-                        while explored[prev] != None:
-                            prev = explored[prev]
-                            path.append(prev)
-                        
-                        return path[len(path) - 2]
-                    
-                    
-                    
-        current = new_current  
-
-def scan_map(player, p: Point, blocked: set, world: World):
-    
-    
+def scan_map(player, p: Point, blocked: set, world: World):   
     
     explored = {}
     current = [p]
@@ -152,8 +102,6 @@ def move_to(player, start: Point, finish: Point, blocked: set):
                     # nasli sme cloveka
                     if neighbour == finish:
                         
-                        player.log("found guy :)") 
-                        
                         prev = neighbour
                         while explored[prev] != start:
                             prev = explored[prev]
@@ -161,6 +109,36 @@ def move_to(player, start: Point, finish: Point, blocked: set):
                         return prev
                     
         current = new_current  
+
+def scared(player, p: Point) -> bool:
+    
+    shade_positions = player.shadePositions
+    
+    finalFear = 0
+    finalHappiness = 999
+    
+    for x in (-1, 1):
+        for y in (-1, 1):
+            
+            pos = Point(x + p.x, y + p.y)
+            
+            fear = 0
+            for pos in pos.get_visible():
+                if pos in shade_positions:
+                    if shade_positions[pos].owner != player.owner:
+                        fear += 1
+                    else:
+                        happiness += 1
+                    
+            finalFear = max(fear, finalFear)
+            finalHappiness = min(happiness, finalHappiness)
+            
+    if finalHappiness >= finalFear:
+        return False
+    else:
+        return True
+        
+    
 
 class Player(PlayerInterface):
     
@@ -179,6 +157,10 @@ class Player(PlayerInterface):
         self.myTombstones: set[Tombstone] = set()
         self.enemyTombstones: set[Tombstone] = set()
         self.peoplePositions: set[Point] = set()
+        self.shadePosition: dict[Point, Shade] = {}
+        
+        for shade in world.alive_shades:
+            self.shadePosition[shade.position] = shade
         
         for person in world.alive_people:
             self.peoplePositions.add(person.position)
@@ -208,22 +190,22 @@ class Player(PlayerInterface):
         for shade in self.myShades:
             closestHuman, closestMyTombstone, closestEnemyTombstone = scan_map(self, shade.position, blocked, world)
             
-            if closestHuman != None:
+            if closestHuman != None and not scared(self, closestHuman):
                 closestHumanToShade[shade] = closestHuman
             
-            # priradim shade k ich najblizsim myTombstone
-            if closestMyTombstone != None:
-                if closestMyTombstone not in shadeToClosestMyTombstone:
-                    shadeToClosestMyTombstone[closestMyTombstone] = set()
+            # # priradim shade k ich najblizsim myTombstone
+            # if closestMyTombstone != None:
+            #     if closestMyTombstone not in shadeToClosestMyTombstone:
+            #         shadeToClosestMyTombstone[closestMyTombstone] = set()
                 
-                shadeToClosestMyTombstone[closestMyTombstone].add(shade)
+            #     shadeToClosestMyTombstone[closestMyTombstone].add(shade)
                 
-            # priradim shade k ich najblizsim enemyTombstone
-            if closestEnemyTombstone != None:
-                if closestEnemyTombstone not in shadeToClosestEnemyTombstone:
-                    shadeToClosestEnemyTombstone[closestEnemyTombstone] = set()
+            # # priradim shade k ich najblizsim enemyTombstone
+            # if closestEnemyTombstone != None:
+            #     if closestEnemyTombstone not in shadeToClosestEnemyTombstone:
+            #         shadeToClosestEnemyTombstone[closestEnemyTombstone] = set()
                     
-                shadeToClosestEnemyTombstone[closestEnemyTombstone].add(shade)
+            #     shadeToClosestEnemyTombstone[closestEnemyTombstone].add(shade)
                 
                     
                     
